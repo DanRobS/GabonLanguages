@@ -1,19 +1,19 @@
 <template>
   <div id="app" class="">
     <Navbar />
-    <LanguageInfoTabs />
+    <LanguageInfo />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
-import LanguageInfoTabs from './components/LanguageInfoTabs'
+import LanguageInfo from './components/LanguageInfo'
 
 export default {
   name: 'App',
   components: {
     Navbar, 
-    LanguageInfoTabs
+    LanguageInfo
   }
 }
 </script>

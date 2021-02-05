@@ -1,5 +1,5 @@
 <template>
-    <div id="LanguageInfoTabs-div" class="container">
+    <div id="LanguageInfo-div" class="container">
         <section>
         <b-tabs type="is-boxed">
             <b-tab-item label="Dictionary" icon="book"></b-tab-item>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-#LanguageInfoTabs-div {   
+#LanguageInfo-div {   
     border-style: solid;
     border-width: 5px;
     border-radius: 5px;

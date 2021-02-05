@@ -10,7 +10,7 @@
             <b-navbar-item href="/">
                 Home
             </b-navbar-item>
-            <b-navbar-dropdown label="Info">
+            <b-navbar-dropdown label="Langues">
                 <b-navbar-item href="#">
                     Inzebi
                 </b-navbar-item>
