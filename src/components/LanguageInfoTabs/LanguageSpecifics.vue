@@ -1,6 +1,6 @@
 <template>
-  <div id="languageSpecifics-div">
-
+  <div id="languageSpecifics-div" class="container">
+    Specifics
   </div>
 </template>
 

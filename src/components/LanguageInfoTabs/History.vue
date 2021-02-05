@@ -1,6 +1,6 @@
 <template>
-  <div id="history-div">
-      
+  <div id="history-div" class="container">
+      History
   </div>
 </template>
 

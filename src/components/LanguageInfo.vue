@@ -1,7 +1,7 @@
 <template>
     <div id="LanguageInfo-div" class="container">
         <section>
-        <b-tabs type="is-boxed">
+        <b-tabs size="is-medium" type="is-boxed">
             <b-tab-item label="Dictionary" icon="book">
                 <Dictionary />
             </b-tab-item>

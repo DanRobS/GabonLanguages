@@ -5,10 +5,10 @@ import store from './store'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLayerGroup, faFileAlt, faBook } from '@fortawesome/free-solid-svg-icons'
+import { faLayerGroup, faFileAlt, faBook, faExchangeAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faLayerGroup, faFileAlt, faBook)
+library.add(faLayerGroup, faFileAlt, faBook, faExchangeAlt, faSearch)
 
 Vue.config.productionTip = false
 
