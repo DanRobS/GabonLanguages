@@ -1,11 +1,15 @@
 <template>
   <div id="dictionary-div" class="container">
+
+      <!-- *************** -->
+      <!-- FRENCH - INZEBI -->
+      <!-- *************** -->
       <div id="lang-switch">
         <nav class="level">
           <p class="level-item has-text-centered lang-titles">
             Français
           </p>
-          <p class="lang-titles">
+          <p id="arrows-icon" class="lang-titles">
             <vue-fontawesome icon="exchange-alt" />
           </p>
           <p class="level-item has-text-centered lang-titles">
@@ -100,6 +104,5 @@ export default {
   margin-left: 1%;
   font-size: 150%;
 }
-
 
 </style>
