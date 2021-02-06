@@ -26,5 +26,6 @@ export default {
   border-style: solid;
   border-color: black;
   margin-top: 10%;
+  margin-bottom: 10%;
 }
 </style>
