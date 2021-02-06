@@ -9,9 +9,9 @@
           <p class="level-item has-text-centered lang-titles">
             Français
           </p>
-          <p id="arrows-icon" class="lang-titles">
-            <vue-fontawesome icon="exchange-alt" />
-          </p>
+          <button class="button is-rounded">
+            <vue-fontawesome id="arrows-icon" class="lang-titles" icon="exchange-alt" />
+          </button>
           <p class="level-item has-text-centered lang-titles">
             Inzebi
           </p>
@@ -85,8 +85,16 @@ export default {
   border-radius: 10px;
 }
 
+#arrows-icon:hover {
+  animation: arrow_spin 1s;
+}
+
+@keyframes arrow_spin {
+  100% {transform: rotate(180deg);}
+}
+
 .lang-titles {
-  font-size: 170%;
+  font-size: 150%;
 }
 
 .Response_word {

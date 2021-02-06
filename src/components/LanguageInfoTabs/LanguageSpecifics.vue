@@ -5,12 +5,8 @@
       <h2 class="subtitle">
         A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
       </h2>
-    </section>
-
-    <section class="section section-color">
-      <h1 class="title">Section</h1>
-      <h2 class="subtitle">
-        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
+      <h2 class="example">
+        Sentance example
       </h2>
     </section>
 
@@ -19,7 +15,21 @@
       <h2 class="subtitle">
         A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
       </h2>
+      <h2 class="example">
+        Sentance example
+      </h2>
     </section>
+
+    <section class="section section-color">
+      <h1 class="title">Section</h1>
+      <h2 class="subtitle">
+        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
+      </h2>
+      <h2 class="example">
+        Sentance example
+      </h2>
+    </section>
+
   </div>
 </template>
 
@@ -35,5 +45,10 @@ export default {
   border-color: black;
   border-radius: 10px;
   margin-bottom: 2%;
+}
+
+.example {
+  font-style: italic;
+  font-size: 150%;
 }
 </style>
