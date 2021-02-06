@@ -12,7 +12,7 @@
         <template #start>
             <router-link to="/">
                 <b-navbar-item class="navbar-items">
-                    Home
+                    Accueil
                 </b-navbar-item>
             </router-link>
             <b-navbar-dropdown class="navbar-items" label="Langues">
@@ -26,12 +26,7 @@
                         Fang
                     </b-navbar-item>
                 </router-link>
-            </b-navbar-dropdown>
-            <router-link to="/about">
-                <b-navbar-item class="navbar-items">
-                    About
-                </b-navbar-item>
-            </router-link>
+            </b-navbar-dropdown>    
         </template>
     </b-navbar>
     </div>
