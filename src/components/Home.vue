@@ -1,6 +1,7 @@
 <template>
-  <div id="home-div">
+  <div id="home-div" class="container">
 
+    HOME
 
   </div>
 </template>
@@ -17,6 +18,8 @@ export default {
 <style>
 
 #home-div {
-    
+  border-style: solid;
+  border-color: black;
+  margin-top: 10%;
 }
 </style>

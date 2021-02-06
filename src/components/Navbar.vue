@@ -1,26 +1,37 @@
 <template>
     <div id="navbar-div" class="container">
         <b-navbar>
+        
         <template #brand>
-            <b-navbar-item class="navbar-items" tag="router-link" :to="{ path: '/' }">
-                New App
-            </b-navbar-item>
+            <router-link to="/">
+                <b-navbar-item class="navbar-items">
+                    App Icon
+                </b-navbar-item>
+            </router-link>
         </template>
         <template #start>
-            <b-navbar-item class="navbar-items" href="/">
-                Home
-            </b-navbar-item>
+            <router-link to="/">
+                <b-navbar-item class="navbar-items">
+                    Home
+                </b-navbar-item>
+            </router-link>
             <b-navbar-dropdown class="navbar-items" label="Langues">
-                <b-navbar-item class="navbar-items" href="#">
-                    Inzebi
-                </b-navbar-item>
-                <b-navbar-item class="navbar-items" href="#">
-                    Fang
-                </b-navbar-item>
+                <router-link to="/langues/inzebi">
+                    <b-navbar-item class="navbar-items">
+                        Inzebi
+                    </b-navbar-item>
+                </router-link>
+                <router-link to="/langues/fang">
+                    <b-navbar-item class="navbar-items">
+                        Fang
+                    </b-navbar-item>
+                </router-link>
             </b-navbar-dropdown>
-            <b-navbar-item class="navbar-items" href="#">
-                About
-            </b-navbar-item>
+            <router-link to="/about">
+                <b-navbar-item class="navbar-items">
+                    About
+                </b-navbar-item>
+            </router-link>
         </template>
     </b-navbar>
     </div>
@@ -42,7 +53,6 @@ export default {
     border-width: 5px;
     border-color: black;
     border-radius: 5px;
-    margin-bottom: 8%;
 }
 
 .navbar-items {

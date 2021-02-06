@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import Dictionary from './LanguageInfoTabs/Dictionary'
-import History from './LanguageInfoTabs/History'
-import LanguageSpecifics from './LanguageInfoTabs/LanguageSpecifics'
+import Dictionary from './Dictionary'
+import History from './History'
+import LanguageSpecifics from './LanguageSpecifics'
 
 export default {
     name: 'LanguageInfoTabs',
@@ -35,7 +35,8 @@ export default {
     border-width: 5px;
     border-radius: 5px;
     border-color: black;
-    margin-bottom: 10%;
+    margin-top: 10%;
+    margin-bottom: 5%;
 }
 
 @media (max-width: 768px) {
