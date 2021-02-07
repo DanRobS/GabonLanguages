@@ -1,12 +1,12 @@
 <template>
   <div id="footer-div">
       <footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Gabon languages </strong> developed by <a href="https://github.com/DanRobS">DanRobS</a>. 
-    </p>
-  </div>
-</footer>
+        <div class="content has-text-centered">
+          <p>
+            <strong>Gabon languages </strong> developed by <a href="https://github.com/DanRobS">DanRobS</a>. 
+          </p>
+        </div>
+      </footer>
   </div>
 </template>
 

@@ -32,7 +32,6 @@ export default {
 <style>
 #LanguageInfo-div {   
     border-style: solid;
-    border-width: 5px;
     border-radius: 5px;
     border-color: black;
     margin-top: 10%;

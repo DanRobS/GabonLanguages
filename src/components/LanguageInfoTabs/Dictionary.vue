@@ -5,7 +5,7 @@
       <!-- FRENCH - INZEBI -->
       <!-- *************** -->
       <div id="french-inzebi" v-bind:class="{ hidden: isDisplayed }">
-          <div class="lang-switch">
+        <div class="lang-switch">
           <nav class="level">
             <p class="level-item has-text-centered lang-titles">
               Français
@@ -21,15 +21,21 @@
 
         <div class="dictionary-section">
           <div class="dictionary-form">
-            <b-field>
+            <b-field grouped group-multiline>
               <b-autocomplete
                   placeholder="Entrer un mot français"
                   icon="search"
                   clearable
-                  @select="option => selected = option">
+                  highlight="true"
+                  :data="fetchFrenchToInzebi"
+                  field="frenchword"
+                  v-model="frenchToInzebiField"
+                  @input="searchFrenchWord"
+                  @select="option => selected1 = option">
                   <template #empty>No results found</template>
               </b-autocomplete>
-          </b-field>
+              <button class="button">Button</button>
+            </b-field>
           </div>
 
           <div class="form-response">
@@ -84,12 +90,22 @@
 </template>
 
 <script>
+import axios from 'axios'
+import uris from '../../mongoURI/mongoClient'
+
+
 export default {
     name: 'Dictionary',
     data: () => {
       return {
         isHidden: true,
-        isDisplayed: false
+        isDisplayed: false,
+        frenchToInzebiField: '',
+        frenchToInzebiWords: [],
+        inzebiToFrenchfield: '',
+        inzebiToFrenchWords: [],
+        selected1: null,
+        selected2: null
       }
     },
     methods: {
@@ -101,6 +117,28 @@ export default {
           this.isHidden = true;
           this.isDisplayed = false;
         }
+      },
+      searchFrenchWord: function () {
+        if(this.frenchToInzebiField!=''){
+
+          axios.get(uris.getFrenchToNzebi+""+this.frenchToInzebiField)
+            .then(response => {
+              this.frenchToInzebiWords = response.data
+            })
+            .catch(error => {
+              console.log(error)
+            })
+
+        } else {
+          this.frenchToInzebiWords = [];
+        }
+      }
+    },
+    computed: {
+      fetchFrenchToInzebi() {
+        return this.frenchToInzebiWords.filter((option) => {
+          return option
+        })
       }
     }
 }
