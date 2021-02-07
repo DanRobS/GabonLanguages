@@ -24,6 +24,7 @@ export default new Vuex.Store({
   
   mutations: {
     getLanguageWords_mutation (state, payload) {
+      console.log(payload);
       state.frenchToLanguage.originalWord = payload.frenchword;
       state.frenchToLanguage.translation = payload.translation;
       state.frenchToLanguage.examples = payload.example;
@@ -34,7 +35,6 @@ export default new Vuex.Store({
     getLanguageWords (context, payload) {
       axios.get(uris.getFrenchToInzebi+""+payload)
         .then(response => {
-          
           context.commit("getLanguageWords_mutation", response.data[0])
         })
         .catch(error => {
