@@ -34,14 +34,18 @@
                   @select="option => selected1 = option">
                   <template #empty>No results found</template>
               </b-autocomplete>
-              <button class="button">Button</button>
+              <button class="button" @click="getFrenchToInzebiWord">Button</button>
             </b-field>
           </div>
 
-          <div class="form-response">
-            <h2 class="Response_word"> Response word </h2>
-            <h4 class="Response_example"> this is an example (inzebi) </h4>
-            <h4 class="Response_translation"> this is an example translation in french </h4>
+          <div v-if="$store.state.frenchToLanguage.originalWord!=''" class="form-response">
+            <h2 class="Response_word"> {{$store.state.frenchToLanguage.originalWord}} - {{$store.state.frenchToLanguage.translation}} </h2>
+            <ul>
+              <li v-for="item in $store.state.frenchToLanguage.examples" :key="item.original">
+                <h4 class="Response_example"> {{item.original}} </h4>
+                <h4 class="Response_translation"> {{item.translation}} </h4>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -85,7 +89,6 @@
         </div>
       </div>
 
-      
   </div>
 </template>
 
@@ -93,23 +96,29 @@
 import axios from 'axios'
 import uris from '../../mongoURI/mongoClient'
 
-
 export default {
-    name: 'Dictionary',
-    data: () => {
-      return {
-        isHidden: true,
-        isDisplayed: false,
-        frenchToInzebiField: '',
-        frenchToInzebiWords: [],
-        inzebiToFrenchfield: '',
-        inzebiToFrenchWords: [],
-        selected1: null,
-        selected2: null
-      }
-    },
-    methods: {
-      languageSwitch: function () {
+  name: 'Dictionary',
+  data: () => {
+    return {
+      isHidden: true,
+      isDisplayed: false,
+
+      //FRENCH TO INZEBI
+      frenchToInzebiField: '',
+      frenchToInzebiWords: [],
+      frenchToNzebiWord: null,
+
+      //INZEBI TO FRENCH
+      inzebiToFrenchfield: '',
+      inzebiToFrenchWords: [],
+      inzebiToFrenchWord: null,
+
+      selected1: null,
+      selected2: null
+    }
+  },
+  methods: {
+    languageSwitch: function () {
         if(this.isHidden==true){
           this.isHidden = false;
           this.isDisplayed = true;
@@ -117,30 +126,44 @@ export default {
           this.isHidden = true;
           this.isDisplayed = false;
         }
-      },
-      searchFrenchWord: function () {
-        if(this.frenchToInzebiField!=''){
+    },
+    // **************************
+    // FRENCH TO INZEBI FUNCTIONS
+    // **************************
+    searchFrenchWord: function () {
+      if(this.frenchToInzebiField!=''){
 
-          axios.get(uris.getFrenchToNzebi+""+this.frenchToInzebiField)
-            .then(response => {
-              this.frenchToInzebiWords = response.data
-            })
-            .catch(error => {
-              console.log(error)
-            })
+        axios.get(uris.getFrenchToInzebi+""+this.frenchToInzebiField)
+          .then(response => {
+            this.frenchToInzebiWords = response.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
 
-        } else {
-          this.frenchToInzebiWords = [];
-        }
+      } else {
+        this.frenchToInzebiWords = [];
       }
     },
-    computed: {
-      fetchFrenchToInzebi() {
-        return this.frenchToInzebiWords.filter((option) => {
-          return option
-        })
+    getFrenchToInzebiWord: function () {
+      if(this.frenchToInzebiField!=""){
+        this.$store.dispatch("getLanguageWords",this.frenchToInzebiField);
+        this.frenchToInzebiField="";
       }
     }
+
+    // **************************
+    // INZEBI TO FRENCH FUNCTIONS
+    // **************************
+
+  },
+  computed: {
+    fetchFrenchToInzebi() {
+      return this.frenchToInzebiWords.filter((option) => {
+        return option
+      })
+    }
+  }
 }
 </script>
 
