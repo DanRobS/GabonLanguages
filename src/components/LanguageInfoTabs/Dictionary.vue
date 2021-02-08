@@ -34,7 +34,7 @@
                   @select="option => selected1 = option">
                   <template #empty>No results found</template>
               </b-autocomplete>
-              <button class="button" @click="getFrenchToInzebiWord">Button</button>
+              <button class="button" @click="getFrenchToInzebiWord">Rechercher</button>
             </b-field>
           </div>
 
@@ -89,7 +89,7 @@
                   @select="option => selected2 = option">
                   <template #empty>No results found</template>
               </b-autocomplete>
-              <button class="button" @click="getInzebiToFrenchWord">Button</button>
+              <button class="button" @click="getInzebiToFrenchWord">Rechercher</button>
           </b-field>
           </div>
 
@@ -168,7 +168,10 @@ export default {
     },
     getFrenchToInzebiWord: function () {
       if(this.frenchToInzebiField!=""){
-        this.$store.dispatch("getLanguageWords",this.frenchToInzebiField);
+        this.$store.dispatch("getLanguageWords",{
+          word: this.frenchToInzebiField,
+          translation: "french - inzebi"
+        });
         this.frenchToInzebiField="";
       }
     },
@@ -193,7 +196,10 @@ export default {
     },
     getInzebiToFrenchWord: function () {
       if(this.inzebiToFrenchField!=""){
-        this.$store.dispatch("getFrenchWords",this.inzebiToFrenchField);
+        this.$store.dispatch("getFrenchWords",{
+          word: this.inzebiToFrenchField,
+          translation: "inzebi - french"
+        });
         this.inzebiToFrenchField="";
       }
     }

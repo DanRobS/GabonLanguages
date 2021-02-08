@@ -36,23 +36,29 @@ export default new Vuex.Store({
   
   actions: {
     getLanguageWords (context, payload) {
-      axios.get(uris.getFrenchToInzebi+""+payload)
-        .then(response => {
-          context.commit("getLanguageWords_mutation", response.data[0])
-        })
-        .catch(error => {
-          console.log(error);
-        })
+      switch (payload.translation) {
+        case "french - inzebi":
+          axios.get(uris.getFrenchToInzebi+""+payload.word)
+          .then(response => {
+            context.commit("getLanguageWords_mutation", response.data[0])
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
     },
 
     getFrenchWords (context, payload) {
-      axios.get(uris.getInzebiToFrench+""+payload)
-        .then(response => {
-          context.commit("getFrenchWords_mutation", response.data[0])
-        })
-        .catch(error => {
-          console.log(error);
-        })
+      switch (payload.translation){
+        case "inzebi - french":
+          axios.get(uris.getInzebiToFrench+""+payload.word)
+            .then(response => {
+              context.commit("getFrenchWords_mutation", response.data[0])
+            })
+            .catch(error => {
+              console.log(error);
+            })
+      }
     }
   },
 
