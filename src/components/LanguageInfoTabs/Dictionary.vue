@@ -39,7 +39,13 @@
           </div>
 
           <div v-if="$store.state.frenchToLanguage.originalWord!=''" class="form-response">
-            <h2 class="Response_word"> {{$store.state.frenchToLanguage.originalWord}} - {{$store.state.frenchToLanguage.translation}} </h2>
+            <h2 class="Response_word level-item"> 
+              {{$store.state.frenchToLanguage.originalWord}} 
+              <span class="arrow">
+                <b-icon icon="long-arrow-alt-right" size="is-medium"></b-icon>
+              </span> 
+              {{$store.state.frenchToLanguage.translation}} 
+            </h2>
             <ul>
               <li v-for="item in $store.state.frenchToLanguage.examples" :key="item.original">
                 <h4 class="Response_example"> {{item.original}} </h4>
@@ -88,7 +94,12 @@
           </div>
 
           <div v-if="$store.state.languageToFrench.originalWord!=''" class="form-response">
-            <h2 class="Response_word"> {{$store.state.languageToFrench.originalWord}} - {{$store.state.languageToFrench.translation}} </h2>
+            <h2 class="Response_word level-item"> 
+              {{$store.state.languageToFrench.originalWord}}
+                <span class="arrow">
+                  <b-icon icon="long-arrow-alt-right" size="is-medium"></b-icon>
+                </span>
+              {{$store.state.languageToFrench.translation}} </h2>
             <ul>
               <li v-for="item in $store.state.languageToFrench.examples" :key="item.original">
                 <h4 class="Response_example"> {{item.original}} </h4>
@@ -219,6 +230,12 @@ export default {
   margin-bottom: 5%;
 }
 
+.arrow {
+  padding-top: 2.5%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
 .dictionary-section {
   margin-right: 8%;
   margin-left: 8%;
@@ -239,7 +256,6 @@ export default {
   flex: 1;
   justify-content: center;
   flex-direction: column;
-  padding-left: 3%;
   border-radius: 10px;
 }
 
@@ -259,6 +275,7 @@ export default {
   margin-bottom: 1.5%;
   margin-left: 1%;
   font-size: 170%;
+  text-align: center;
 }
 
 .Response_example {

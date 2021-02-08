@@ -2,13 +2,13 @@
     <div id="LanguageInfo-div" class="container">
         <section>
         <b-tabs size="is-medium" type="is-boxed">
-            <b-tab-item label="Dictionary" icon="book">
+            <b-tab-item label="Dictionnaire" icon="book">
                 <Dictionary />
             </b-tab-item>
-            <b-tab-item label="History" icon="file-alt">
+            <b-tab-item label="Histoire" icon="file-alt">
                 <History />
             </b-tab-item>
-            <b-tab-item label="Language Specifics" icon="layer-group">
+            <b-tab-item label="Apprendre l'Inzebi" icon="layer-group">
                 <LanguageSpecifics />
             </b-tab-item>
         </b-tabs>
