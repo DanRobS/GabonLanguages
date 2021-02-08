@@ -18,16 +18,19 @@ export default new Vuex.Store({
       translation: '',
       examples: []
     }
-
-
   },
   
   mutations: {
     getLanguageWords_mutation (state, payload) {
-      console.log(payload);
       state.frenchToLanguage.originalWord = payload.frenchword;
       state.frenchToLanguage.translation = payload.translation;
       state.frenchToLanguage.examples = payload.example;
+    },
+
+    getFrenchWords_mutation (state, payload) {
+      state.languageToFrench.originalWord = payload.nzebi_word;
+      state.languageToFrench.translation = payload.translation;
+      state.languageToFrench.examples = payload.example;
     }
   },
   
@@ -40,10 +43,20 @@ export default new Vuex.Store({
         .catch(error => {
           console.log(error);
         })
+    },
+
+    getFrenchWords (context, payload) {
+      axios.get(uris.getInzebiToFrench+""+payload)
+        .then(response => {
+          context.commit("getFrenchWords_mutation", response.data[0])
+        })
+        .catch(error => {
+          console.log(error);
+        })
     }
   },
 
-
   modules: {
+
   }
 })

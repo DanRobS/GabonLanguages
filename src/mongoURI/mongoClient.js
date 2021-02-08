@@ -1,6 +1,6 @@
 const uris = {
-    getFrenchToInzebi: "http://localhost:8081/search/frenchToNzebi/",
-    getInzebiToFrench: "http://localhost:8081/search/nzebiToFrench/"
+    getFrenchToInzebi: "http://localhost:8081/search/frenchToInzebi/",
+    getInzebiToFrench: "http://localhost:8081/search/inzebiToFrench/"
 }
 
 export default uris

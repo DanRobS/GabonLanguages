@@ -70,21 +70,31 @@
 
         <div class="dictionary-section">
           <div class="dictionary-form">
-            <b-field>
+            <b-field grouped group-multiline>
               <b-autocomplete
                   placeholder="Entrer un mot inzebi"
                   icon="search"
                   clearable
-                  @select="option => selected = option">
+                  highlight="true"
+                  v-model="inzebiToFrenchField"
+                  field="nzebi_word"
+                  :data="fetchInzebiToFrench"
+                  @input="searchInzebiWord"
+                  @select="option => selected2 = option">
                   <template #empty>No results found</template>
               </b-autocomplete>
+              <button class="button" @click="getInzebiToFrenchWord">Button</button>
           </b-field>
           </div>
 
-          <div class="form-response">
-            <h2 class="Response_word"> Response word </h2>
-            <h4 class="Response_example"> this is an example (french) </h4>
-            <h4 class="Response_translation"> this is an example translation in inzebi </h4>
+          <div v-if="$store.state.languageToFrench.originalWord!=''" class="form-response">
+            <h2 class="Response_word"> {{$store.state.languageToFrench.originalWord}} - {{$store.state.languageToFrench.translation}} </h2>
+            <ul>
+              <li v-for="item in $store.state.languageToFrench.examples" :key="item.original">
+                <h4 class="Response_example"> {{item.original}} </h4>
+                <h4 class="Response_translation"> {{item.translation}} </h4>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -109,7 +119,7 @@ export default {
       frenchToNzebiWord: null,
 
       //INZEBI TO FRENCH
-      inzebiToFrenchfield: '',
+      inzebiToFrenchField: '',
       inzebiToFrenchWords: [],
       inzebiToFrenchWord: null,
 
@@ -150,16 +160,42 @@ export default {
         this.$store.dispatch("getLanguageWords",this.frenchToInzebiField);
         this.frenchToInzebiField="";
       }
-    }
+    },
 
     // **************************
     // INZEBI TO FRENCH FUNCTIONS
     // **************************
+    searchInzebiWord: function () {
+      if(this.inzebiToFrenchField!=''){
 
+        axios.get(uris.getInzebiToFrench+""+this.inzebiToFrenchField)
+          .then(response => {
+            this.inzebiToFrenchWords = response.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
+
+      } else {
+        this.inzebiToFrenchWords = [];
+      }
+    },
+    getInzebiToFrenchWord: function () {
+      if(this.inzebiToFrenchField!=""){
+        this.$store.dispatch("getFrenchWords",this.inzebiToFrenchField);
+        this.inzebiToFrenchField="";
+      }
+    }
   },
   computed: {
     fetchFrenchToInzebi() {
       return this.frenchToInzebiWords.filter((option) => {
+        return option
+      })
+    },
+
+    fetchInzebiToFrench() {
+      return this.inzebiToFrenchWords.filter((option) => {
         return option
       })
     }
