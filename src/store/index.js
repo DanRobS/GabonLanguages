@@ -5,6 +5,20 @@ import uris from '../mongoURI/mongoClient'
 
 Vue.use(Vuex)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default new Vuex.Store({
   state: {
     frenchToLanguage: {
